@@ -10,7 +10,8 @@ body {
   background: #f5f5f5;
   color: #222;
   text-align: center;
-  padding-top: 80px;
+  /* Reduced padding-top to account for the stacked mobile navbar height */
+  padding-top: 150px; 
 }
 
 /* -------------------- NAVBAR -------------------- */
@@ -26,6 +27,8 @@ body {
   display: flex;
   justify-content: center;
   gap: 40px;
+  /* Allow wrapping for flexibility, though media query will handle stacking */
+  flex-wrap: wrap; 
 }
 
 .navbar a {
@@ -79,9 +82,9 @@ h2 {
 
 /* Make content share same background */
 .content {
-  background: url("images/land1.jpg") no-repeat center center/cover;; /* choose any color or replace with image */
+  background: url("images/land1.jpg") no-repeat center center/cover; /* choose any color or replace with image */
   width: 100%;
-  padding: 6rem 1.5rem;;
+  padding: 6rem 1.5rem;
   background-size: cover;
   height: max-content;
 }
@@ -136,23 +139,81 @@ footer {
 
 /* -------------------- RESPONSIVENESS -------------------- */
 
-@media (max-width: 768px) {
+/* Mobile devices (Portrait and Landscape) - Max width 600px */
+@media (max-width: 600px) {
+  /* Navbar stacks links vertically, uses full width for links, and centers text */
   .navbar {
     flex-direction: column;
-    gap: 10px;
-    padding: 15px 0;
+    gap: 0; /* Remove gap when stacking */
+    padding: 10px 0;
+  }
+
+  .navbar a {
+    width: 100%; /* Make links take full width */
+    padding: 10px 0; /* Adjust padding for better vertical spacing */
+    font-size: 15px;
+    text-align: center;
+  }
+  
+  /* Adjust body padding to accommodate taller fixed navbar */
+  body {
+    padding-top: 250px; 
   }
 
   .glow {
-    font-size: 32px;
+    font-size: 28px; /* Smaller font for glow effect */
+  }
+  
+  h2 {
+    font-size: 20px; /* Slightly smaller section title */
   }
 
   .banner {
-    height: 200px;
+    height: 150px; /* Reduced banner height for mobile */
+    margin-top: 20px;
+  }
+
+  .content {
+    padding: 3rem 1rem; /* Adjust padding for content */
+  }
+
+  .about-section {
+    width: 95%; /* Wider on small screens */
+    padding: 20px;
+    margin: 20px auto;
+  }
+  
+  .about-section h2 {
+    font-size: 24px;
+  }
+  
+  .about-section p {
+    font-size: 16px;
+  }
+}
+
+/* Tablets and small desktops - From 601px to 992px */
+@media (min-width: 601px) and (max-width: 992px) {
+  /* Navbar adjustments for better fit on tablets */
+  .navbar {
+    gap: 20px;
+    padding: 10px 10px;
+  }
+  
+  .glow {
+    font-size: 40px;
+  }
+
+  body {
+    padding-top: 100px; /* Standard padding for this size */
+  }
+  
+  .banner {
+    height: 250px;
   }
 
   .about-section {
     width: 90%;
-    padding: 25px;
+    padding: 30px;
   }
 }
