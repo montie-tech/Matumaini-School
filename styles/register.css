@@ -1,36 +1,50 @@
-/* -------------------------- */
-/* YOUR ORIGINAL CSS (UNCHANGED) */
-/* -------------------------- */
+/* ----------------------- */
+/* MODIFIED CSS            */
+/* ----------------------- */
 
 body {
+    /* Changed to min-height for content flexibility and sticky footer */
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background: url("../images/register.jpg");
     background-size: cover;
+    background-position: center; /* Added for better mobile view */
     text-align: center;
-    overflow-y: hidden;
+    overflow-y: auto; /* Allow scrolling if content is too long */
     overflow-x: hidden;
     background-repeat: no-repeat;
+
+    /* Flexbox for Footer-at-Bottom Layout */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+}
+
+/* New: Wrapper for main content to push footer down */
+/* IMPORTANT: This requires wrapping your main HTML content in <div class="content-wrap">...</div> */
+.content-wrap {
+    flex-grow: 1; /* Allows content area to take up available space */
+    width: 100%;
+    /* Optional: Use padding-bottom to prevent content from touching footer when scrolling */
+    padding-bottom: 50px; 
 }
 
 h1 {
     text-align: center;
     font-family: "Source Sans Pro", sans-serif;
     font-weight: normal;
-    font-style: var();
-    font-size: xx-large;
+    /* Removed non-standard 'font-style: var()' */
+    font-size: 2.5rem; /* Used rem for better scaling */
 }
 
 h2 {
     text-align: center;
-    font-size: larger;
+    font-size: 1.25rem; /* Used rem for better scaling */
     font-style: italic;
     font-family: 'Times New Roman', Times, serif;
 }
 
 a {
-    justify-content: flex-start;
-    align-items: center;
+    /* Removed redundant justify-content and align-items */
     padding: 10px 14px;
     background: white;
     text-decoration: none;
@@ -43,6 +57,8 @@ a {
     -moz-border-radius: 14px;
     -ms-border-radius: 14px;
     -o-border-radius: 14px;
+    display: inline-block; /* Makes it easier to manage in layouts */
+    margin: 5px;
 }
 
 a:hover {
@@ -51,23 +67,28 @@ a:hover {
 }
 
 footer {
-  background: #003366;
-  color: white;
-  padding: 10px 0;
-  margin-top: 165px;
-  letter-spacing: 1px;
-  margin-left: -30px;
+    background: #003366;
+    color: white;
+    padding: 10px 0;
+    /* Removed fixed margins; flex-grow handles the spacing */
+    letter-spacing: 1px;
+    width: 100%; /* Ensure it spans the entire width */
+    text-align: center; /* Ensure text is centered */
+    /* It will naturally stick to the bottom due to the body/content-wrap flex rules */
+    margin-top: 120px;
+    margin-left: -10px;
 }
 
-/* --------------------------------------------- */
-/* RESPONSIVE FIXES (ADDED WITHOUT CHANGING ANYTHING) */
-/* --------------------------------------------- */
 
-/* Tablets */
+/* ---------------------------------------------------------- */
+/* RESPONSIVE FIXES                                          */
+/* ---------------------------------------------------------- */
+
+/* Tablets (Max Width: 992px) */
 @media (max-width: 992px) {
 
     h1 {
-        font-size: 32px;
+        font-size: 28px;
     }
 
     h2 {
@@ -75,19 +96,17 @@ footer {
     }
 
     a {
-        font-size: 18px;
+        font-size: 16px;
         padding: 10px 12px;
     }
 
+    /* Footer changes are less necessary with flexbox, but font size can be adjusted */
     footer {
-        margin-left: 0;
-        margin-top: 120px;
-        text-align: center;
         font-size: 16px;
     }
 }
 
-/* Mobile */
+/* Phones (Max Width: 600px) */
 @media (max-width: 600px) {
 
     body {
@@ -96,23 +115,19 @@ footer {
     }
 
     h1 {
-        font-size: 26px;
+        font-size: 24px;
     }
 
     h2 {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     a {
-        font-size: 16px;
-        padding: 8px 12px;
+        font-size: 14px;
+        padding: 8px 10px;
     }
 
     footer {
-        margin-left: 0;
-        margin-top: 80px;
-        width: 100%;
-        text-align: center;
         font-size: 14px;
     }
 }

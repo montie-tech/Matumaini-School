@@ -6,12 +6,17 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* MODIFICATION 1: STICKY FOOTER PREP 
+  Set min-height for body to enable sticky footer logic (Flexbox/Grid setup needed in HTML/Body structure)
+*/
 body {
   background: #f5f5f5;
   color: #222;
   text-align: center;
-  /* Reduced padding-top to account for the stacked mobile navbar height */
-  padding-top: 150px; 
+  padding-top: 80px;
+  min-height: 100vh; /* Ensure body takes at least full viewport height */
+  display: flex; /* Enable flexbox for sticky footer logic */
+  flex-direction: column; /* Stack content vertically */
 }
 
 /* -------------------- NAVBAR -------------------- */
@@ -25,10 +30,15 @@ body {
   left: 0;
   z-index: 100;
   display: flex;
-  justify-content: center;
-  gap: 40px;
-  /* Allow wrapping for flexibility, though media query will handle stacking */
-  flex-wrap: wrap; 
+  justify-content: space-around; /* Distribute items widely on desktop */
+  align-items: center;
+}
+
+/* New: Container for links to handle mobile collapsing (requires HTML change) */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
 }
 
 .navbar a {
@@ -46,6 +56,17 @@ body {
 .navbar a.active {
   background: black;
   color: #ffffff;
+}
+
+/* NEW: HAMBURGER ICON STYLE 
+  This assumes your HTML has an element with class 'menu-icon' 
+*/
+.menu-icon {
+    display: none; /* Hide by default on desktop */
+    cursor: pointer;
+    font-size: 30px; /* Use a large font size (or an SVG/Image) */
+    color: white;
+    padding-right: 20px;
 }
 
 /* -------------------- GLOW TITLE EFFECT -------------------- */
@@ -71,6 +92,14 @@ body {
 
 /* -------------------- HERO SECTION -------------------- */
 
+/* MODIFICATION 2: MAIN CONTENT CONTAINER */
+/* Ensure all content (except fixed elements) pushes the footer down */
+.main-content {
+    /* flex: 1; ensures main content takes up remaining vertical space */
+    flex: 1; 
+    width: 100%;
+}
+
 h2 {
   margin-top: 20px;
   font-size: 22px;
@@ -82,7 +111,7 @@ h2 {
 
 /* Make content share same background */
 .content {
-  background: url("images/land1.jpg") no-repeat center center/cover; /* choose any color or replace with image */
+  background: url("images/land1.jpg") no-repeat center center/cover;
   width: 100%;
   padding: 6rem 1.5rem;
   background-size: cover;
@@ -94,7 +123,7 @@ h2 {
   width: 100%;
   height: 300px;
   background: url("images/land1.jpg") no-repeat center center/cover;
-  border-radius: 0;        /* remove rounded corners */
+  border-radius: 0;
   margin-top: 40px;
 }
 
@@ -125,95 +154,83 @@ h2 {
 
 /* -------------------- FOOTER -------------------- */
 
+/* MODIFICATION 3: FOOTER PLACEMENT 
+  This style ensures the footer sticks to the bottom of the viewport 
+  when the content is short, due to the flex setup on the body.
+*/
 footer {
   background: #003366;
   color: white;
   padding: 20px 0;
-  margin-top: 50px;
+  margin-top: 0; /* Removed margin-top, relies on main-content flex: 1 */
   letter-spacing: 1px;
+  width: 100%; /* Ensure full width */
 }
 
 .glow2 h4 {
   text-shadow: 0 0 8px #ffffff;
 }
 
-/* -------------------- RESPONSIVENESS -------------------- */
+/* -------------------- RESPONSIVENESS (MOBILE FIRST NAVBAR) -------------------- */
 
-/* Mobile devices (Portrait and Landscape) - Max width 600px */
-@media (max-width: 600px) {
-  /* Navbar stacks links vertically, uses full width for links, and centers text */
-  .navbar {
+@media (max-width: 768px) {
+  /* Hide the desktop links and show the menu icon */
+  .nav-links {
+    position: fixed;
+    top: 60px; /* Below the main navbar bar */
+    left: 0;
+    width: 100%;
+    height: 0; /* Start collapsed */
+    background: #002244;
     flex-direction: column;
-    gap: 0; /* Remove gap when stacking */
-    padding: 10px 0;
-  }
-
-  .navbar a {
-    width: 100%; /* Make links take full width */
-    padding: 10px 0; /* Adjust padding for better vertical spacing */
-    font-size: 15px;
-    text-align: center;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
   }
   
-  /* Adjust body padding to accommodate taller fixed navbar */
-  body {
-    padding-top: 250px; 
+  /* When nav is active (toggled by JS, class added to .nav-links) */
+  .nav-links.nav-active {
+      height: 200px; /* Expand to show links (adjust height as needed) */
+      padding: 10px 0;
   }
 
-  .glow {
-    font-size: 28px; /* Smaller font for glow effect */
+  .nav-links a {
+      text-align: center;
+      padding: 10px 0;
+      width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   
-  h2 {
-    font-size: 20px; /* Slightly smaller section title */
-  }
-
-  .banner {
-    height: 150px; /* Reduced banner height for mobile */
-    margin-top: 20px;
-  }
-
-  .content {
-    padding: 3rem 1rem; /* Adjust padding for content */
-  }
-
-  .about-section {
-    width: 95%; /* Wider on small screens */
-    padding: 20px;
-    margin: 20px auto;
-  }
-  
-  .about-section h2 {
+  /* Show the menu icon */
+  .menu-icon {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 15px;
     font-size: 24px;
   }
   
-  .about-section p {
-    font-size: 16px;
-  }
-}
-
-/* Tablets and small desktops - From 601px to 992px */
-@media (min-width: 601px) and (max-width: 992px) {
-  /* Navbar adjustments for better fit on tablets */
+  /* Adjust the main navbar layout for mobile */
   .navbar {
-    gap: 20px;
-    padding: 10px 10px;
-  }
-  
-  .glow {
-    font-size: 40px;
+    justify-content: flex-start; /* Keep logo/title to the left */
+    padding: 15px 20px;
+    height: 60px; /* Fixed height for mobile nav bar */
   }
 
+  /* Adjust body padding for fixed navbar height */
   body {
-    padding-top: 100px; /* Standard padding for this size */
+    padding-top: 60px;
   }
-  
+
+  .glow {
+    font-size: 32px;
+  }
+
   .banner {
-    height: 250px;
+    height: 200px;
   }
 
   .about-section {
     width: 90%;
-    padding: 30px;
+    padding: 25px;
   }
 }

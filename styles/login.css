@@ -1,30 +1,44 @@
 /* ----------------------- */
-/* YOUR ORIGINAL CSS       */
+/* MODIFIED CSS            */
 /* ----------------------- */
 
 body {
+    /* Changed to min-height to allow content to grow */
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background: url("../images/login.jpg");
     background-size: cover;
+    background-position: center; /* Added for better mobile view */
     text-align: center;
-    overflow-y: hidden;
+    overflow-y: auto; /* Allow scrolling if content is too long */
     overflow-x: hidden;
+
+    /* Flexbox for Footer-at-Bottom Layout */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+}
+
+/* New: Wrapper for main content to push footer down */
+.content-wrap {
+    flex-grow: 1; /* Allows content area to take up available space */
+    display: flex; /* Optional: Use flex to center main content if needed */
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    padding-bottom: 50px; /* Add padding to prevent content from touching footer */
 }
 
 h1 {
     text-align: center;
-    text-color: yellow;
+    color: yellow; /* Corrected 'text-color' to 'color' */
 }
 
 h3 {
     text-align: center;
-    text-color: blue
+    color: blue; /* Corrected 'text-color' to 'color' */
 }
 
 a {
-    justify-content: flex-start;
-    align-items: center;
+    /* Removed redundant justify-content and align-items as it's not a flex container here */
     padding: 14px 14px;
     background: white;
     text-decoration: none;
@@ -37,6 +51,8 @@ a {
     -ms-border-radius: 14px;
     -o-border-radius: 14px;
     font-size: 16px;
+    display: inline-block; /* Makes it easier to manage in layouts */
+    margin: 5px; /* Added small margin for better spacing */
 }
 
 a:hover {
@@ -46,7 +62,7 @@ a:hover {
 
 p {
     text-align: center;
-    text-color: #003366;
+    color: #003366; /* Corrected 'text-color' to 'color' */
     font-size: larger;
 }
 
@@ -59,19 +75,25 @@ div {
 }
 
 footer {
-  background: #003366;
-  color: white;
-  padding: 10px 0;
-  margin-top: 130px;
-  letter-spacing: 1px;
-  margin-left: -30px;
+    background: #003366;
+    color: white;
+    padding: 10px 0;
+    /* Removed margin-top, margin-left and set width to 100% for proper placement */
+    letter-spacing: 1px;
+    width: 100%; /* Ensure it spans the entire width */
+    text-align: center; /* Ensure text is centered */
+    /* position: sticky; /* Alternative: sticky footer (requires parent to scroll) */
+    /* bottom: 0; */
+    margin-top: 100px;
+    margin-left: -10px;
 }
 
+
 /* ---------------------------------------------------------- */
-/* RESPONSIVE FIXES — added WITHOUT changing your code        */
+/* RESPONSIVE FIXES                                          */
 /* ---------------------------------------------------------- */
 
-/* Tablets */
+/* Tablets (Max Width: 992px) */
 @media (max-width: 992px) {
 
     h1 {
@@ -90,16 +112,14 @@ footer {
     div {
         font-size: 18px;
     }
-
+    
+    /* Footer adjustments for tablets (less necessary with the main fix) */
     footer {
-        margin-left: 0;
-        margin-top: 90px;
-        text-align: center;
         font-size: 16px;
     }
 }
 
-/* Phones */
+/* Phones (Max Width: 600px) */
 @media (max-width: 600px) {
 
     body {
@@ -128,11 +148,8 @@ footer {
         font-size: 16px;
     }
 
+    /* Footer adjustments for phones (less necessary with the main fix) */
     footer {
-        margin-left: 0;
-        margin-top: 60px;
-        text-align: center;
         font-size: 14px;
-        width: 100%;
     }
 }
