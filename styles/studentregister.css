@@ -1,8 +1,9 @@
+/* Your Original CSS — unchanged */
 body {
     width: 100vw;
     height: 100vh;
     background: url("../images/register.jpg");
-    background-size: fill;
+    background-size: cover;
     text-align: center;
     border: none;
     overflow-y: hidden;
@@ -29,38 +30,61 @@ a {
     justify-content: flex-start;
     align-items: center;
     padding: 10px 14px;
-    background: #003366;
+    background: white;
     text-decoration: none;
-    color: white;
+    color: #003366;
     border-radius: 14px;
-    -webkit-border-radius: 14px;
-    -moz-border-radius: 14px;
-    -ms-border-radius: 14px;
-    -o-border-radius: 14px;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
 }
-
 a:hover {
-    color: #003366;
-    background-color: white;
+    color: white;
+    background-color: #003366;
+}
+
+form {
+    text-align: center;
 }
 
 input {
     justify-content: flex-start;
     align-items: center;
-    padding: 12px 20px;
-    background: white;
-    text-decoration: none;
-    color: #003366;
-    height: max-content;
-    font-size: 20px;
+    padding: 10px 14px;
+    border: 1px solid whitesmoke;
+    width: 20%;
+    background-color: white;
+    color: black;
 }
 
 input:hover {
-    color: white;
-    background-color: #003366;
+    color: #003366;
+    background-color: white;
+}
+
+input[type="button"] {
+    background-color: white;
+    font-size: 18px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    border: none;
+    color: #003366;
+}
+
+p {
+    font-size: 14px;
+    margin: 15px 0;
+    color: blue;
+}
+
+#message {
+    justify-content: center;
+    text-align: center;
+    width: 200px;
+    line-height: 20px;
+    margin: auto;
+    margin-bottom: 20px;
+    border-radius: 4px;
 }
 
 footer {
@@ -70,4 +94,61 @@ footer {
   margin-top: 150px;
   letter-spacing: 1px;
   margin-left: -30px;
+}
+
+/* --------------------------------------------------------- */
+/* RESPONSIVE FIXES BELOW */
+/* --------------------------------------------------------- */
+
+/* Tablets & small laptops */
+@media (max-width: 992px) {
+    input {
+        width: 40%;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    a {
+        font-size: 18px;
+        padding: 8px 12px;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 600px) {
+    body {
+        background-size: cover;
+        background-position: center;
+    }
+
+    input {
+        width: 80%;
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    a {
+        font-size: 16px;
+        padding: 8px 10px;
+    }
+
+    #message {
+        width: 80%;
+    }
+
+    footer {
+        margin-left: 0;
+        margin-top: 60px;
+        font-size: 14px;
+        text-align: center;
+    }
 }

@@ -18,7 +18,7 @@ body {
 .navbar {
   width: 100%;
   background: #003366;
-  padding: 12px 0;
+  padding: 10px 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -31,9 +31,9 @@ body {
 .navbar a {
   color: white;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 1px;
-  padding: 8px 16px;
+  padding: 8px 8px;
   border-radius: 6px;
   transition: 0.3s ease-in-out;
 }

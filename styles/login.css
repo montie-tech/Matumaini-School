@@ -1,3 +1,7 @@
+/* ----------------------- */
+/* YOUR ORIGINAL CSS       */
+/* ----------------------- */
+
 body {
     width: 100vw;
     height: 100vh;
@@ -60,4 +64,74 @@ footer {
   margin-top: 130px;
   letter-spacing: 1px;
   margin-left: -30px;
+}
+
+/* ---------------------------------------------------------- */
+/* RESPONSIVE FIXES — added WITHOUT changing your code        */
+/* ---------------------------------------------------------- */
+
+/* Tablets */
+@media (max-width: 992px) {
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    a {
+        padding: 12px 12px;
+        font-size: 16px;
+    }
+
+    div {
+        font-size: 18px;
+    }
+
+    footer {
+        margin-left: 0;
+        margin-top: 90px;
+        text-align: center;
+        font-size: 16px;
+    }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+
+    body {
+        background-size: cover;
+        background-position: center;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    a {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    div {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    footer {
+        margin-left: 0;
+        margin-top: 60px;
+        text-align: center;
+        font-size: 14px;
+        width: 100%;
+    }
 }

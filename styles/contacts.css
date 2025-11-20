@@ -1,68 +1,118 @@
+/* GENERAL PAGE STYLING */
 body {
-    width: 100vw;
-    height: 100vh;
-    background-color:#003366;
-    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    background-color: #003366;
     background-size: cover;
-    border: none;
-    overflow-y: hidden;
+    background-repeat: no-repeat;
+    font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
 }
 
-h1 {
+/* HEADINGS */
+h1, h2, h3 {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    font-size: large;
-    color: white;
-}
-
-
-h2 {
-    text-align: center;
-    font-size: large;
-    font-family: Arial, Helvetica, sans-serif;
     color: white;
     font-weight: 600;
+    margin: 10px 8px;
+    line-height: 1.3;
 }
 
-h3 {
-    text-align: center;
-    font-size: large;
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    font-weight: 600;
-}
+/* DEFAULT (DESKTOP) TEXT SIZES */
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.4rem; }
+h3 { font-size: 1.2rem; }
 
-
+/* BUTTON / LINK STYLING */
 a {
-    justify-content: flex-start;
-    align-items: center;
-    padding: 16px 18px;
+    display: inline-block;
+    padding: 12px 18px;
     background: black;
     text-decoration: none;
     color: white;
     border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: 500;
+    margin: 10px auto;
+    font-size: 1rem;
 }
 
 a:hover {
-    color: black;
     background: white;
-    font-weight: 500;
-    font-family: Arial, Helvetica, sans-serif;
+    color: black;
 }
 
+/* RESPONSIVE FOOTER */
 footer {
-  background: white;
-  color: #003366;
-  padding: 10px 0;
-  margin-top: 175px;
-  letter-spacing: 1px;
-  margin-left: -30px;
+    background: white;
+    color: #003366;
+    text-align: center;
+    padding: 8px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-top: 120px;
+}
+
+/* ------------------ RESPONSIVE BREAKPOINTS ------------------ */
+
+/* Large Tablets & Small Laptops */
+@media (max-width: 900px) {
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.3rem; }
+    h3 { font-size: 1.1rem; }
+    a { font-size: 0.95rem; }
+    footer { font-size: 0.95rem; }
+}
+
+/* Tablets & Bigger Phones */
+@media (max-width: 600px) {
+    h1 { font-size: 1.4rem; }
+    h2 { font-size: 1.15rem; }
+    h3 { font-size: 1rem; }
+
+    a {
+        width: 85%;
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    footer {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Small Phones (≤450px) */
+@media (max-width: 450px) {
+    h1 { font-size: 1.2rem; }
+    h2 { font-size: 1rem; }
+    h3 { font-size: 0.95rem; }
+
+    a {
+        width: 90%;
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    footer {
+        font-size: 0.85rem;
+    }
+}
+
+/* Extra Small Phones (≤350px) - auto shrink */
+@media (max-width: 350px) {
+    h1 { font-size: 0.9rem; }
+    h2 { font-size: 0.8rem; }
+    h3 { font-size: 0.75rem; }
+
+    a {
+        width: 92%;
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
 }

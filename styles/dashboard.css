@@ -1085,3 +1085,79 @@ body {
     left: initial;
   }
 }
+
+/* Extra Global Responsive Improvements */
+
+/* Make tables fully scrollable on small screens */
+.details table,
+.fee table,
+.courseattendence table,
+.results table {
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+}
+
+/* Ensure search bar fits small screens */
+@media (max-width: 600px) {
+  .search {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .search label input {
+    font-size: 14px;
+    height: 35px;
+    padding-left: 30px;
+  }
+}
+
+/* Fix topbar layout on all screens */
+@media (max-width: 650px) {
+  .topbar {
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+    padding: 10px;
+  }
+}
+
+/* Force navigation brand/title to wrap on smaller devices */
+@media (max-width: 480px) {
+  .navigation ul li a .title {
+    font-size: 14px;
+    white-space: normal;
+  }
+}
+
+/* Card responsiveness improvements */
+@media (max-width: 400px) {
+  .cardBox .card {
+    padding: 30px 15px;
+  }
+
+  .cardBox .card .numbers {
+    font-size: 2rem;
+  }
+
+  .cardBox .card .iconBx i {
+    font-size: 2.2rem;
+  }
+}
+
+/* Improve layout for smallest devices (<=360px width) */
+@media (max-width: 360px) {
+  .toggle {
+    font-size: 1.2rem;
+  }
+
+  .user {
+    width: 30px;
+    height: 30px;
+  }
+
+  .search label input {
+    height: 32px;
+    font-size: 13px;
+  }
+}
