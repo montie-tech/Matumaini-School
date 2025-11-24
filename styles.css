@@ -1,242 +1,242 @@
-/* -------------------------------------- */
-/* 1. Global & Base Styles 🏠            */
-/* -------------------------------------- */
+/* -------------------------------------------------- */
+/* 1. GLOBAL BASE                                      */
+/* -------------------------------------------------- */
 
-/* Reset for modern best practices */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Crucial for responsive design */
+    box-sizing: border-box;
 }
 
-/* Base Body Setup - Flexbox for Footer-at-Bottom */
 body {
     min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     display: flex;
     flex-direction: column;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4; /* Light background for clean look */
     line-height: 1.6;
 }
 
-/* Ensure the main content area grows to push the footer down */
 .main-content {
     flex-grow: 1;
-    display: flex; /* Flexbox for layout within main content */
-    flex-direction: column;
 }
 
+/* Universal text */
 h1, h2, h4 {
     text-align: center;
-    margin-bottom: 10px;
-    color: #003366; /* Consistent primary color */
+    color: #003366;
 }
 
 p {
     text-align: justify;
     padding: 0 20px;
     max-width: 900px;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 20px;
 }
 
-/* Glow Effect for Titles */
+/* Glow effects */
 .glow {
-    text-shadow: 0 0 5px #00aaff, 0 0 10px #00aaff, 0 0 20px #00aaff;
-    color: white; /* Needs a bright color to show the shadow */
+    text-shadow: 0 0 5px #00aaff, 0 0 12px #00aaff;
+    color: white;
 }
 
 .glow2 {
     text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00;
 }
 
-/* -------------------------------------- */
-/* 2. Navigation Bar (Navbar) 🧭         */
-/* -------------------------------------- */
+/* -------------------------------------------------- */
+/* 2. NAVIGATION BAR (DESKTOP)                        */
+/* -------------------------------------------------- */
 
 .navbar {
-    background-color: #003366;
+    background: #003366;
     color: white;
-    padding: 15px 20px;
+    padding: 12px 16px;
     display: flex;
-    /* --- MODIFIED: Changed alignment for center-focused links --- */
-    justify-content: center; /* Center links in the middle */
+    justify-content: space-between;      /* Allows toggle + centered links */
     align-items: center;
-    position: sticky; /* Sticky navbar at the top */
+    position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.menu-icon {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
-    padding: 10px 15px;
-    font-size: 0.9rem;
-    transition: background-color 0.3s, color 0.3s;
-    border-radius: 5px;
-    /* --- MODIFIED: Removed bold weight --- */
-    font-weight: normal; /* Removes bold weight */
+    padding: 7px 14px;
+    font-size: 0.95rem;
+    transition: 0.3s;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
 }
 
 .nav-links a:hover {
-    background-color: white;
+    background: white;
     color: #003366;
+    border-radius: 5px;
 }
 
-.menu-icon {
-    /* To keep the menu icon functional on small screens, 
-       we need to position it absolutely if you want the links centered. 
-       However, we'll keep it hidden here for large screens as per original, 
-       and re-enable the center alignment for the links on mobile in the media query. */
-    display: none; /* Hidden on large screens */
-    cursor: pointer;
-    font-size: 1.5rem;
-}
+/* -------------------------------------------------- */
+/* 3. HERO / BANNER                                    */
+/* -------------------------------------------------- */
 
-/* -------------------------------------- */
-/* 3. Main Content Sections 🌟           */
-/* -------------------------------------- */
-
-/* Hero/Header Section (Content) */
 .content {
     background: url("images/land1.jpg") no-repeat center center/cover;
-    height: 60vh; /* Viewport height for visual impact */
+    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
     padding: 20px;
+    text-align: center;
 }
 
 .content h1 {
-    font-size: 3.3rem;
+    font-size: 3rem;
     margin-bottom: 15px;
 }
 
 .content h2 {
-    font-size: 1.8rem;
-    color: #003366;
+    font-size: 1.6rem;
 }
 
-/* About Section */
+/* -------------------------------------------------- */
+/* 4. ABOUT SECTION                                    */
+/* -------------------------------------------------- */
+
 .about-section {
     padding: 40px 20px;
-    background-color: white;
-    text-align: center;
+    background: white;
 }
 
 .about-section h2 {
-    color: black;
     font-size: 2rem;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #003366;
-    display: inline-block;
-    padding-bottom: 5px;
     font-weight: 600;
+    display: inline-block;
+    border-bottom: 2px solid #003366;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    margin-left: 450px;
 }
 
-
-/* -------------------------------------- */
-/* 4. Footer 🦶                           */
-/* -------------------------------------- */
+/* -------------------------------------------------- */
+/* 5. FOOTER                                           */
+/* -------------------------------------------------- */
 
 footer {
-    background-color: #003366;
+    background: #003366;
     color: white;
     text-align: center;
-    padding: 20px 0;
-    margin-top: auto; /* Pushes footer to the bottom */
-}
-
-footer h4 {
-    color: white;
-    margin: 0;
-    font-weight: 400;
+    padding: 2px 0;
+    margin-top: auto;
 }
 
 footer small {
-    display: block;
-    margin-top: 5px;
     font-size: 0.8rem;
 }
 
-/* -------------------------------------- */
-/* 5. Media Queries (Responsiveness) 📱  */
-/* -------------------------------------- */
+/* -------------------------------------------------- */
+/* 6. RESPONSIVENESS                                   */
+/* -------------------------------------------------- */
 
-/* Tablet & Smaller Desktop Screens (Max Width: 992px) */
+/* ---------- Tablets (992px) ---------- */
 @media (max-width: 992px) {
+
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
     .content h1 {
-        font-size: 3rem;
+        font-size: 2.6rem;
     }
 
     .content h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 }
 
-
-/* Mobile Screens (Max Width: 768px) */
+/* ---------- MOBILE MENU (768px) ---------- */
 @media (max-width: 768px) {
-    .navbar {
-        /* Re-introduce space-between to align menu icon and links */
-        justify-content: space-between;
-        flex-wrap: wrap; /* Allow items to wrap */
+
+    .menu-icon {
+        display: block;
     }
-    
+
+    /* Hide links on mobile */
     .nav-links {
         display: none;
         flex-direction: column;
         width: 100%;
-        background-color: #003366;
+        background: #003366;
         text-align: center;
         margin-top: 10px;
     }
 
-    .nav-links a {
-        padding: 15px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    /* Class toggled by JavaScript to show the menu */
-    .nav-active {
+    /* Active toggle class added by JS */
+    .nav-links.nav-active {
         display: flex;
     }
 
-    .menu-icon {
-        display: block; /* Show the menu icon on mobile */
+    .nav-links a {
+        padding: 15px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        font-size: 1.1rem;               /* Bigger for small screens */
     }
 
-    /* Adjust main content sizes */
     .content h1 {
-        font-size: 2rem;
+        font-size: 2.1rem;
     }
 
     .content h2 {
-        font-size: 1.2rem;
+        font-size: 1.25rem;
     }
 
     .about-section h2 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
-    
+
     p {
         padding: 0 15px;
+        font-size: 1rem;
     }
 }
 
-/* Small Phone Screens (Max Width: 480px) */
+/* ---------- EXTRA SMALL PHONES (480px) ---------- */
 @media (max-width: 480px) {
+
     .content {
-        height: 50vh; /* Reduce height on very small screens */
+        height: 50vh;
     }
 
     .content h1 {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
     }
 
     .content h2 {
         font-size: 1rem;
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;   /* Even bigger for tiny phones */
+    }
+
+    p {
+        font-size: 0.95rem;
     }
 }
