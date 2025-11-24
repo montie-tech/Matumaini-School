@@ -6,223 +6,163 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* MODIFICATION 1: STICKY FOOTER PREP 
-  Set min-height for body to enable sticky footer logic (Flexbox/Grid setup needed in HTML/Body structure)
-*/
+/* BODY + FLEX FOR STICKY FOOTER */
 body {
   background: #f5f5f5;
   color: #222;
-  text-align: center;
-  padding-top: 80px;
-  min-height: 100vh; /* Ensure body takes at least full viewport height */
-  display: flex; /* Enable flexbox for sticky footer logic */
-  flex-direction: column; /* Stack content vertically */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 70px; /* space for fixed navbar */
 }
 
-/* -------------------- NAVBAR -------------------- */
-
+/* ------------------------------------------------------
+   NAVBAR DESKTOP
+-------------------------------------------------------- */
 .navbar {
   width: 100%;
+  height: 70px;
   background: #003366;
-  padding: 10px 0;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 999;
   display: flex;
-  justify-content: space-around; /* Distribute items widely on desktop */
+  justify-content: space-between;
   align-items: center;
+  padding: 0 30px;
 }
 
-/* New: Container for links to handle mobile collapsing (requires HTML change) */
+.logo {
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
 .nav-links {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
+  display: flex;
+  gap: 35px;
 }
 
-.navbar a {
+.nav-links a {
   color: white;
+  font-size: 12px;
   text-decoration: none;
-  font-size: 16px;
-  letter-spacing: 1px;
-  padding: 10px 8px;
+  padding: 9px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  background: #001d3d;
   border-radius: 6px;
-  transition: 0.3s ease-in-out;
-  font-weight: 300;
 }
 
-.navbar a:hover,
-.navbar a.active {
-  background: black;
-  color: #ffffff;
-}
-
-/* NEW: HAMBURGER ICON STYLE 
-  This assumes your HTML has an element with class 'menu-icon' 
-*/
+/* ------------------------------------------------------
+   HAMBURGER ICON
+-------------------------------------------------------- */
 .menu-icon {
-    display: none; /* Hide by default on desktop */
-    cursor: pointer;
-    font-size: 30px; /* Use a large font size (or an SVG/Image) */
-    color: white;
-    padding-right: 20px;
-}
-
-/* -------------------- GLOW TITLE EFFECT -------------------- */
-
-.glow {
-  font-size: 48px;
+  display: none;
+  font-size: 30px;
   color: white;
-  text-shadow: 
-    0 0 10px #00aaff,
-    0 0 20px #00aaff,
-    0 0 40px #00aaff;
-  animation: glowAnimation 2s infinite alternate;
+  cursor: pointer;
 }
 
-@keyframes glowAnimation {
-  from {
-    text-shadow: 0 0 10px #0099ff;
-  }
-  to {
-    text-shadow: 0 0 20px #00ccff, 0 0 40px #00ccff;
-  }
-}
+/* ------------------------------------------------------
+   HERO / BANNER
+-------------------------------------------------------- */
 
-/* -------------------- HERO SECTION -------------------- */
-
-/* MODIFICATION 2: MAIN CONTENT CONTAINER */
-/* Ensure all content (except fixed elements) pushes the footer down */
-.main-content {
-    /* flex: 1; ensures main content takes up remaining vertical space */
-    flex: 1; 
-    width: 100%;
-}
-
-h2 {
-  margin-top: 20px;
-  font-size: 22px;
-  color: #003366;
-  letter-spacing: 1px;
-}
-
-/* -------------------- BANNER -------------------- */
-
-/* Make content share same background */
-.content {
-  background: url("images/land1.jpg") no-repeat center center/cover;
-  width: 100%;
-  padding: 6rem 1.5rem;
-  background-size: cover;
-  height: max-content;
-}
-
-/* Remove border-radius from banner image */
 .banner {
   width: 100%;
   height: 300px;
   background: url("images/land1.jpg") no-repeat center center/cover;
-  border-radius: 0;
-  margin-top: 40px;
+  margin-top: 15px;
 }
 
+.content h1 {
+  margin-top: 20px;
+  font-size: 26px;
+  color: #003366;
+  letter-spacing: 1px;
+}
 
-/* -------------------- ABOUT SECTION -------------------- */
-
+/* ------------------------------------------------------
+   ABOUT SECTION
+-------------------------------------------------------- */
 .about-section {
   background: white;
-  padding: 40px;
-  margin: 40px auto;
-  width: 85%;
+  width: 90%;
   max-width: 900px;
+  margin: 40px auto;
+  padding: 35px;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
 .about-section h2 {
-  font-size: 28px;
+  font-size: 22px;
   color: #003366;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .about-section p {
+  font-size: 17px;
   line-height: 1.7;
   color: #444;
-  font-size: 17px;
 }
 
-/* -------------------- FOOTER -------------------- */
-
-/* MODIFICATION 3: FOOTER PLACEMENT 
-  This style ensures the footer sticks to the bottom of the viewport 
-  when the content is short, due to the flex setup on the body.
-*/
+/* ------------------------------------------------------
+   FOOTER (STICKY)
+-------------------------------------------------------- */
 footer {
+  margin-top: auto;
   background: #003366;
+  padding: 25px 0;
+  text-align: center;
   color: white;
-  padding: 20px 0;
-  margin-top: 0; /* Removed margin-top, relies on main-content flex: 1 */
-  letter-spacing: 1px;
-  width: 100%; /* Ensure full width */
+  width: 100%;
 }
 
-.glow2 h4 {
-  text-shadow: 0 0 8px #ffffff;
-}
-
-/* -------------------- RESPONSIVENESS (MOBILE FIRST NAVBAR) -------------------- */
-
+/* ------------------------------------------------------
+   MOBILE RESPONSIVENESS
+-------------------------------------------------------- */
 @media (max-width: 768px) {
-  /* Hide the desktop links and show the menu icon */
+
+  /* Show hamburger */
+  .menu-icon {
+    display: block;
+  }
+
+  /* Hide desktop links */
   .nav-links {
     position: fixed;
-    top: 60px; /* Below the main navbar bar */
+    top: 70px;
     left: 0;
     width: 100%;
-    height: 0; /* Start collapsed */
+    height: 0;
+    overflow: hidden;
     background: #002244;
     flex-direction: column;
-    overflow: hidden;
-    transition: all 0.5s ease-in-out;
+    text-align: center;
+    gap: 0;
+    transition: height 0.4s ease;
   }
-  
-  /* When nav is active (toggled by JS, class added to .nav-links) */
+
+  /* When active (JS adds nav-active) */
   .nav-links.nav-active {
-      height: 200px; /* Expand to show links (adjust height as needed) */
-      padding: 10px 0;
+    height: 220px; /* enough to show links */
+    padding-top: 10px;
   }
 
   .nav-links a {
-      text-align: center;
-      padding: 10px 0;
-      width: 100%;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  /* Show the menu icon */
-  .menu-icon {
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
     display: block;
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    font-size: 24px;
-  }
-  
-  /* Adjust the main navbar layout for mobile */
-  .navbar {
-    justify-content: flex-start; /* Keep logo/title to the left */
-    padding: 15px 20px;
-    height: 60px; /* Fixed height for mobile nav bar */
   }
 
-  /* Adjust body padding for fixed navbar height */
   body {
-    padding-top: 60px;
-  }
-
-  .glow {
-    font-size: 32px;
+    padding-top: 70px;
   }
 
   .banner {
@@ -230,7 +170,25 @@ footer {
   }
 
   .about-section {
-    width: 90%;
     padding: 25px;
+  }
+}
+
+/* Extra small phones (below 380px) */
+@media (max-width: 380px) {
+  .logo {
+    font-size: 16px;
+  }
+
+  .menu-icon {
+    font-size: 26px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  .about-section p {
+    font-size: 15px;
   }
 }

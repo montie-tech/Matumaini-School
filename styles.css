@@ -1,0 +1,241 @@
+/* -------------------------------------- */
+/* 1. Global & Base Styles 🏠            */
+/* -------------------------------------- */
+
+/* Reset for modern best practices */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Crucial for responsive design */
+}
+
+/* Base Body Setup - Flexbox for Footer-at-Bottom */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light background for clean look */
+    line-height: 1.6;
+}
+
+/* Ensure the main content area grows to push the footer down */
+.main-content {
+    flex-grow: 1;
+    display: flex; /* Flexbox for layout within main content */
+    flex-direction: column;
+}
+
+h1, h2, h4 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #003366; /* Consistent primary color */
+}
+
+p {
+    text-align: justify;
+    padding: 0 20px;
+    max-width: 900px;
+    margin: 0 auto 20px auto;
+}
+
+/* Glow Effect for Titles */
+.glow {
+    text-shadow: 0 0 5px #00aaff, 0 0 10px #00aaff, 0 0 20px #00aaff;
+    color: white; /* Needs a bright color to show the shadow */
+}
+
+.glow2 {
+    text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00;
+}
+
+/* -------------------------------------- */
+/* 2. Navigation Bar (Navbar) 🧭         */
+/* -------------------------------------- */
+
+.navbar {
+    background-color: #003366;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    /* --- MODIFIED: Changed alignment for center-focused links --- */
+    justify-content: center; /* Center links in the middle */
+    align-items: center;
+    position: sticky; /* Sticky navbar at the top */
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+    /* --- MODIFIED: Removed bold weight --- */
+    font-weight: normal; /* Removes bold weight */
+}
+
+.nav-links a:hover {
+    background-color: white;
+    color: #003366;
+}
+
+.menu-icon {
+    /* To keep the menu icon functional on small screens, 
+       we need to position it absolutely if you want the links centered. 
+       However, we'll keep it hidden here for large screens as per original, 
+       and re-enable the center alignment for the links on mobile in the media query. */
+    display: none; /* Hidden on large screens */
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+/* -------------------------------------- */
+/* 3. Main Content Sections 🌟           */
+/* -------------------------------------- */
+
+/* Hero/Header Section (Content) */
+.content {
+    background: url("images/land1.jpg") no-repeat center center/cover;
+    height: 60vh; /* Viewport height for visual impact */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+
+.content h2 {
+    font-size: 1.8rem;
+    color: #ffcc00;
+}
+
+/* About Section */
+.about-section {
+    padding: 40px 20px;
+    background-color: white;
+    text-align: center;
+}
+
+.about-section h2 {
+    color: #003366;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ffcc00;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+
+/* -------------------------------------- */
+/* 4. Footer 🦶                           */
+/* -------------------------------------- */
+
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto; /* Pushes footer to the bottom */
+}
+
+footer h4 {
+    color: white;
+    margin: 0;
+    font-weight: 400;
+}
+
+footer small {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.8rem;
+}
+
+/* -------------------------------------- */
+/* 5. Media Queries (Responsiveness) 📱  */
+/* -------------------------------------- */
+
+/* Tablet & Smaller Desktop Screens (Max Width: 992px) */
+@media (max-width: 992px) {
+    .content h1 {
+        font-size: 3rem;
+    }
+
+    .content h2 {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* Mobile Screens (Max Width: 768px) */
+@media (max-width: 768px) {
+    .navbar {
+        /* Re-introduce space-between to align menu icon and links */
+        justify-content: space-between;
+        flex-wrap: wrap; /* Allow items to wrap */
+    }
+    
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #003366;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .nav-links a {
+        padding: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Class toggled by JavaScript to show the menu */
+    .nav-active {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: block; /* Show the menu icon on mobile */
+    }
+
+    /* Adjust main content sizes */
+    .content h1 {
+        font-size: 2rem;
+    }
+
+    .content h2 {
+        font-size: 1.2rem;
+    }
+
+    .about-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    p {
+        padding: 0 15px;
+    }
+}
+
+/* Small Phone Screens (Max Width: 480px) */
+@media (max-width: 480px) {
+    .content {
+        height: 50vh; /* Reduce height on very small screens */
+    }
+
+    .content h1 {
+        font-size: 1.5rem;
+    }
+
+    .content h2 {
+        font-size: 1rem;
+    }
+}
